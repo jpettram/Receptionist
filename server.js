@@ -3,6 +3,6 @@ const PORT = process.env.PORT || 9000
 http
   .createServer((req, res) => {
     console.log('New connection')
-    res.end('Receptionist backend')
+    res.end('Serveri kuulee')
   })
   .listen(PORT, () => console.log('Serveri kuulee ', PORT))
