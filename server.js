@@ -5,4 +5,4 @@ http
     console.log('New connection')
     res.end('Serveri kuulee')
   })
-  .listen(PORT, () => console.log('Serveri kuulee ', PORT))
+  .listen(PORT, () => console.log('Listening on port ', PORT))
