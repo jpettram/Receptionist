@@ -1,0 +1,39 @@
+
+// This version is public facing. Adds an object to animation list
+function moveRightTo(posRef, goalX, time = 1){
+    if (posRef[0] === goalX) 
+    {
+        console.log("POs is same as goal");
+        return;
+    }
+    if (moveRightHandle === null)
+        moveRightHandle = requestAnimationFrame(moveObjectsRightTo);
+    // Initialize animation
+    timeStarts[timeStarts.length] = timer_60;
+    // moveRightHandles[moveRightHandles.length] = requestAnimationFrame(moveO)
+    positions[positions.length] = posRef;
+    goals[goals.length] = goalX;
+    goalTimes[goalTimes.length] = time;
+    movingRights[movingRights.length] = true;
+    counters[counters.length] = 0;
+}
+// This version is private facing.  Animates all objects in animation list
+function moveObjectsRightTo() {
+    if (positions.length === 0){
+        cancelAnimationFrame(moveRightHandle);
+        console.log("Done");
+        return;
+    }
+    moveRightHandle = requestAnimationFrame(moveObjectsRightTo);
+    console.log("Animating?");
+    for (let i = 0; i < positions.length; i++) {
+        positions[i][0] += 5.1;
+        if (positions[i][0] > goals[i]) {
+            // Set final position and remove from list
+            positions[i][0] = goals[i];
+            positions.splice(i,1);
+            goals.slice(i,1);
+            timeStarts.slice(i,1);
+        }
+    }
+}
