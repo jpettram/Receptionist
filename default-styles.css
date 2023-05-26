@@ -14,7 +14,7 @@ p {
     left:20vw;
     right:20vw;
 }
-canvas{
+canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -23,7 +23,7 @@ canvas{
     left:10vw;
     right:10vw;
 }
-.bg-image{
+.bg-image {
     background-image: url("img/bg.png");
 
     filter:blur(8px);
