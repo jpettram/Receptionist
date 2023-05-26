@@ -1,12 +1,13 @@
-const express = require('express');
-const app = express();
+const http = require('http')
+const fs = require('fs')
 
-// Serve static files from the 'public' directory
-app.use(express.static('public'));
-
-// Handle other routes and requests
-// ...
-
-// Start the server
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log('Listening on port ', PORT));
+const PORT = process.env.PORT || 9000
+http
+  .createServer((req, res) => {
+  
+    res.writeHead(200, { 'content-type': 'text/html' })
+    fs.createReadStream('index.html').pipe(res)
+    console.log('New connection')
+    // res.end()
+  })
+  .listen(PORT, () => console.log('Listening on port ', PORT))
