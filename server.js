@@ -12,6 +12,14 @@ http.createServer((req, res) => {
     const filePath = path.join(__dirname, req.url);
     res.writeHead(200, { 'Content-Type': 'application/javascript' });
     fs.createReadStream(filePath).pipe(res);
+  } else if (req.url.endsWith('.html')) {
+    const filePath = path.join(__dirname, req.url);
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    fs.createReadStream(filePath).pipe(res);    
+  } else if (req.url.endsWith('.css')) {
+    const filePath = path.join(__dirname, req.url);
+    res.writeHead(200, { 'Content-Type': 'text/css' });
+    fs.createReadStream(filePath).pipe(res);      
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('404 Not Found');
