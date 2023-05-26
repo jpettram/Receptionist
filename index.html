@@ -1,13 +1,76 @@
-<!DOCTYPE html>
 <html>
+
 <head>
-  <title>Page Title</title>
+  <title>TypingTrainer2 - ReceptionstBETA</title>
   <link href="default-styles.css" type="text/css" rel="stylesheet" />
+  <script src = './lib/howler.js/dist/howler.js'></script>
+  <script type="module" src="./src/loader.js"></script>
+
+  	<!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) 
+    <script src="/js/qcconsent.js"></script>
+	
+		
+     Google Tag Manager
+     <script>
+      window.dataLayer = window.dataLayer || [];
+      </script>
+      <script src="https://www.typingtest.com/forms/js/typingtest-gtm1.js"></script> 
+    End Google Tag Manager -->
+
 </head>
+
 <body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
+  <header>
+  </header>
+  <!-- <h1>Test Site for typing trainer</h1> -->
+  <div class="bg-image"></div>
+	<canvas width="700" height="500"></canvas>
+  <div id="dev">
+    <label for="send">Send Speed</label>
+    <input type = "number" id="sendSpeed" min = "1" max = "500" value=".2" name="send">
+  </div>
+  <p id="end">Receptionist</p>
+  
+	<script>
+    /**
+     * Track events on links with data-track set to true
+     * Push data attributes to dataLayer
+     * @returns {void}
+     */
+    (function trackAnalyticsEvents() {
+      /**
+       * Push data attributes to dataLayer
+       * @param {object} event - The event object
+       * @param {object} node - The node element
+       * @returns {void}
+       */
+      const pushToDataLayer = (event, node) => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          hit_type: node.dataset.hit_type,
+          category: node.dataset.category,
+          event: node.dataset.action,
+          label: node.dataset.label,
+          href: node.href ? node.href : node.dataset.href,
+        });
+      };
+  
+      /**
+       * Get all defined elements on a page
+       */
+      const ELEMENTS_TO_TRACK = document.querySelectorAll('[data-track="true"]');
+  
+      /**
+       * Add event listener to each node
+       */
+      ELEMENTS_TO_TRACK.forEach((node) => {
+        node.addEventListener("click", (event) => {
+          pushToDataLayer(event, node);
+        });
+      });
+    })();
+  </script>
+    
 </body>
+
 </html>
